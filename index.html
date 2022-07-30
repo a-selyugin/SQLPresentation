@@ -1,78 +1,310 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>SQL databases</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>SQL databases</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+	<link rel="stylesheet" href="dist/custom.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>SQL databases</h1>
+				<p>(PostgreSQL)</p>
+				<div><img src="./img/postgresql.svg" alt=""></div>
+			</section>
+			<section>
 				<section>
-					<p>SQL databases</p>
-					<p>(PostgreSQL)</p>
+					<h2>Why use database?</h2>
+					<p><img src="./img/database-why.png" alt=""></p>
 				</section>
 				<section>
-					<section>Why use database?</section>
-					<section>
-						<p>How many types of database are there?</p>
-						<p><img src="./img/database-types.jpg" alt=""></p>
-					</section>				
+					<h2>How many types of database are there?</h2>
+					<p><img src="./img/database-types.jpg" alt=""></p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Relational database</h2>
+					<ul>
+						<li>A <strong>relational database</strong> is a database based on the relational model of
+							data.</li>
+						<li class="fragment"><strong>RDBMS</strong> - relational database management system</li>
+						<li class="fragment"><strong>SQL</strong> - Structured Query Language</li>
+					</ul>
 				</section>
 				<section>
-					<section>What is a relational database?</section>
-					<section>Table as a basis</section>
-					<section>Relations between tables</section>
-					<section>more complex relations</section>
+					<h2>Table as a basis</h2>
+					<div><img src="./img/table.png" alt=""></div>
+					<ul style="font-size: 1.5rem">
+						<li><strong>Row</strong> (tuple, record) - a data set representing a single item</li>
+						<li class="fragment"><strong>Column</strong> (attribute, field) - a labeled element of a tuple, e.g. "Name"
+							or "Price"</li>
+						<li class="fragment"><strong>Table</strong> (relation, base relvar) - set of columns and rows</li>
+						<li class="fragment"><strong>View</strong> (result set, derived relvar) - a set of tuples; a data report
+							from the RDBMS in
+							response to a query
+						</li>
+					</ul>
 				</section>
 				<section>
-					<section>
-						<p>SQL:</p>
-						<p>Structured Query Language</p>
-					</section>
-					<section>
-						<p>SQL:</p>
-						<p>Structured Query Language</p>
-						<p>Declarative</p>
-					</section>
-					<section>
-						<p>SQL:</p>
-						<p>Structured Query Language</p>
-						<p>Declarative</p>
-						<p>Accesing many records with single command</p>
-					</section>
+					<h2>Relations between tables</h2>
+					<div><img src="./img/relational-dbs.jpeg" alt="" style="height: 50vh"></div>
+					<ul style="font-size: 1.3rem">
+						<li><strong>Primary key</strong> (tuple, record) - a data set representing a single item</li>
+						<li><strong>Foreign key</strong> (attribute, field) - a labeled element of a tuple, e.g. "Name" or "Price"
+						</li>
+					</ul>
 				</section>
-				<section>Data types</section>
-				<section>Type of actions</section>
-				<section>PostgreSQL</section>
-				<section>Install, setup</section>
-				<section>Commands</section>
-				<section>Examples</section>
-			</div>
+				<section>
+					<h2>Relations between tables</h2>
+					<div style="display:flex; align-items: center;">
+						<div><img src="./img/complex-relations.png" style="height: 55vh" alt=""></div>
+						<ul style="font-size: 1.5rem">
+							<li>One to one</li>
+							<li>One to many</li>
+							<li>Many to many</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Normal forms</h2>
+					<ul style="font-size: 1.5rem">
+						<li>Database <strong>normalization</strong> is the process of organizing the attributes of the database to
+							<strong>reduce or eliminate data redundancy</strong> (having the same data but at different places).
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Normal forms</h2>
+					<ul style="font-size: 1.5rem">
+						<li><strong>First normal form</strong> - relation should not contain composite or multi-valued attribute.
+						</li>
+					</ul>
+					<div><img src="./img/first-normal.png" alt=""></div>
+				</section>
+				<section>
+					<h2>Normal forms</h2>
+					<ul style="font-size: 1.5rem">
+						<li><strong>Second normal form</strong> - 1NF + relation must not contain any partial dependency.
+						</li>
+					</ul>
+					<div><img src="./img/second-normal.png" alt=""></div>
+				</section>
+				<section>
+					<h2>Normal forms</h2>
+					<ul style="font-size: 1.5rem">
+						<li><strong>Third normal form</strong> - 2NF + relation must not contain any transitive dependency.
+						</li>
+					</ul>
+					<div><img src="./img/third-normal.png" alt=""></div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h1>SQL</h1>
+					<h4><strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage</h4>
+					<ul style="font-size: 2rem">
+						<li class="fragment"><strong>Developed by IBM in 70's</strong></li>
+						<li class="fragment"><strong>Declarative</strong></li>
+						<li class="fragment"><strong>Accessing many records with single command</strong></li>
+					</ul>
+				</section>
+				<section>
+					<h2>SQL data types</h2>
+					<ul style="font-size: 1.2rem">
+						<li><strong>Predefined data types</strong>
+							<ul>
+								<li>Char</li>
+								<li>Numeric</li>
+								<li>Binary</li>
+								<li>Date/Time/Interval</li>
+								<li>Boolean</li>
+								<li>XML</li>
+								<li>JSON</li>
+							</ul>
+						</li>
+						<li><strong>Constructed types</strong>
+							<ul>
+								<li>Array</li>
+								<li>Multiset</li>
+								<li>Reference</li>
+							</ul>
+						</li>
+						<li><strong>User type</strong> - comparable to classes in OOP</li>
+					</ul>
+				</section>
+				<section>
+					<h2>SQL main operators</h2>
+					<div class="sql__operators">
+						<ul>
+							<li>
+								<strong>
+									Data Definition
+								</strong>
+								<ul>
+									<li>CREATE</li>
+									<li>ALTER</li>
+									<li>DROP</li>
+								</ul>
+							</li>
+							<li>
+								<strong>
+									Data Manipulation
+								</strong>
+								<ul>
+									<li>SELECT</li>
+									<li>INSERT</li>
+									<li>UPDATE</li>
+									<li>DELETE</li>
+								</ul>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<strong>
+									Data Control
+								</strong>
+								<ul>
+									<li>GRANT</li>
+									<li>REVOKE</li>
+									<li>DENY</li>
+								</ul>
+							</li>
+							<li>
+								<strong>
+									Transaction Control
+								</strong>
+								<ul>
+									<li>COMMIT</li>
+									<li>ROLLBACK</li>
+									<li>SAVEPOINT</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section>
+				<h1>PostgreSQL</h1>
+				<ul style="font-size: 2rem">
+					<li><strong>Free and open-source</strong></li>
+					<li><strong>Multiplatform</strong></li>
+					<li><strong>One of the most popular open-source RDBMS</strong></li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<h2>Main commands</h2>
+					<p>Query data from the table</p>
+					<pre><code>SELECT attr</code></pre>
+
+					<pre class="fragment"><code>SELECT attr 
+FROM table_name</code></pre>
+					<pre class="fragment"><code>SELECT *
+FROM table_name</code></pre>
+					<pre class="fragment">
+						<code>SELECT attr1, attr2, attr3 
+FROM table_name
+</code>
+					</pre>
+					<pre class="fragment">
+						<code>SELECT attr
+FROM table_name
+ORDER BY expression [ASC | DESC]
+</code>
+					</pre>
+					<div></div>
+				</section>
+				<section>
+					<p>Query with filtering</p>
+					<pre><code>SELECT first_name
+FROM customers
+WHERE first_name = 'John'</code></pre>
+					<pre class="fragment"><code>SELECT first_name
+FROM customers
+WHERE first_name = 'John' AND
+			last_name = 'Brown'</code></pre>
+					<pre class="fragment"><code>SELECT first_name
+FROM customers
+WHERE first_name IN ('Ann','Anne','Annie');</code></pre>
+					<pre class="fragment"><code>SELECT first_name
+FROM customers
+WHERE first_name LIKE 'Ann%';</code></pre>
+					<pre class="fragment"><code>SELECT first_name
+FROM customers
+WHERE first_name LIKE 'A%' AND
+			LENGTH(first_name) BETWEEN 3 AND 5</code></pre>
+					<div></div>
+				</section>
+				<section>
+					<p>Query with limiting</p>
+					<pre><code>SELECT first_name
+FROM customers
+WHERE first_name LIKE 'A%' AND
+			LENGTH(first_name) BETWEEN 3 AND 5
+LIMIT 5</code></pre>
+					<div></div>
+				</section>
+			</section>
+
+			<section>
+				<h2>Links</h2>
+				<ul style="font-size: 1.5rem">
+					<li>
+						<a href="https://www.postgresql.org/docs/">https://www.postgresql.org/docs/</a> - official documentation
+					</li>
+					<li>
+						<a
+							href="https://postgrespro.ru/docs/postgresql/14/index">https://postgrespro.ru/docs/postgresql/14/index</a>
+						- документация на русском
+					</li>
+					<li>
+						<a href="https://www.postgresqltutorial.com/ ">https://www.postgresqltutorial.com/</a>
+						- good tutorial for a quick start
+					</li>
+					<li>
+						<a
+							href="https://www.geeksforgeeks.org/normal-forms-in-dbms/">https://www.geeksforgeeks.org/normal-forms-in-dbms/</a>
+						- about normal forms
+					</li>
+					<li>
+						<a href="https://habr.com/ru/post/254773/">https://habr.com/ru/post/254773/</a> - про нормализацию на
+						русском.
+					</li>
+				</ul>
+			</section>
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>

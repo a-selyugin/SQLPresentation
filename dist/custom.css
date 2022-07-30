@@ -1,0 +1,14 @@
+
+strong {
+  color: #579acd;
+}
+
+.sql__operators {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem
+}
+
+.sql__operators > ul {
+  margin: 50px;
+}
