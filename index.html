@@ -60,21 +60,31 @@
 				</section>
 				<section>
 					<h2>Relations between tables</h2>
-					<div><img src="./img/relational-dbs.jpeg" alt="" style="height: 50vh"></div>
+					<div><img src="./img/relational-dbs.jpg" alt="" style="height: 35vh"></div>
 					<ul style="font-size: 1.3rem">
-						<li><strong>Primary key</strong> (tuple, record) - a data set representing a single item</li>
-						<li><strong>Foreign key</strong> (attribute, field) - a labeled element of a tuple, e.g. "Name" or "Price"
+						<li><strong>Primary key</strong> uniquely identifies each record in a table. Primary keys must contain
+							UNIQUE values, and cannot contain NULL values.</li>
+						<li><strong>Foreign key</strong> is a field (or collection of fields) in one table, that refers to the
+							PRIMARY KEY in another table. The table with the foreign key is called the child table, and the table with
+							the primary key is called the referenced or parent table.
 						</li>
+						<li><strong>Composite key</strong> is a primary key composed of multiple columns used to identify a record
+							uniquely</li>
 					</ul>
 				</section>
 				<section>
 					<h2>Relations between tables</h2>
-					<div style="display:flex; align-items: center;">
-						<div><img src="./img/complex-relations.png" style="height: 55vh" alt=""></div>
-						<ul style="font-size: 1.5rem">
-							<li>One to one</li>
-							<li>One to many</li>
-							<li>Many to many</li>
+					<div>
+						<div><img src="./img/complex-relations.png" style="max-height: 35vh;" alt=""></div>
+						<ul style="font-size: 1.2rem">
+							<li><strong>One to one:</strong> For every record in the parent table, there is one and only one record
+								in the child table.</li>
+							<li><strong>One to many:</strong> For every record in the parent table, there are one or more related
+								records in the child table.</li>
+							<li><strong>Many to many:</strong> For every record in the parent table, there are many related records
+								in the child table, and for every record in the child table, there are many related records in the
+								parent table.
+							</li>
 						</ul>
 					</div>
 				</section>
@@ -85,6 +95,8 @@
 					<ul style="font-size: 1.5rem">
 						<li>Database <strong>normalization</strong> is the process of organizing the attributes of the database to
 							<strong>reduce or eliminate data redundancy</strong> (having the same data but at different places).
+						</li>
+						<li>Most database systems are normalized database up to the <strong>third normal forms</strong> in DBMS.
 						</li>
 					</ul>
 				</section>
@@ -111,6 +123,22 @@
 						</li>
 					</ul>
 					<div><img src="./img/third-normal.png" alt=""></div>
+				</section>
+				<section>
+					<h2>Normal forms</h2>
+					<ul style="font-size: 1.5rem">
+						<li>If no database table instance contains two or more, independent and multivalued data describing the
+							relevant entity, then it is in <strong>4th Normal Form</strong>.
+						</li>
+						<li>
+							A table is in <strong>5th Normal Form</strong> only if it is in 4NF and it cannot be decomposed into any
+							number of smaller tables without loss of data.
+						</li>
+						<li>
+							<strong>6th Normal Form </strong>is not standardized, yet however, it is being discussed by database
+							experts for some time.
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section>
@@ -197,6 +225,16 @@
 						</ul>
 					</div>
 				</section>
+				<section>
+					<h2>Most popular SQL databases</h2>
+					<ul style="font-size: 2rem">
+						<li><strong>Oracle</strong></li>
+						<li><strong>PostgreSQL</strong></li>
+						<li><strong>MySQL</strong></li>
+						<li><strong>Microsoft SQL Server</strong></li>
+						<li><strong>IBM DB2</strong></li>
+					</ul>
+				</section>
 			</section>
 			<section>
 				<h1>PostgreSQL</h1>
@@ -204,7 +242,9 @@
 					<li><strong>Free and open-source</strong></li>
 					<li><strong>Multiplatform</strong></li>
 					<li><strong>One of the most popular open-source RDBMS</strong></li>
+					<li><strong>Expandable programming language support, including V8 (JS).</strong></li>
 				</ul>
+				<div><img src="./img/postgresql.svg" alt=""></div>
 			</section>
 			<section>
 				<section>
@@ -213,25 +253,36 @@
 					<pre><code>SELECT attr</code></pre>
 
 					<pre class="fragment"><code>SELECT attr 
-FROM table_name</code></pre>
-					<pre class="fragment"><code>SELECT *
-FROM table_name</code></pre>
-					<pre class="fragment">
-						<code>SELECT attr1, attr2, attr3 
-FROM table_name
-</code>
-					</pre>
-					<pre class="fragment">
-						<code>SELECT attr
-FROM table_name
-ORDER BY expression [ASC | DESC]
-</code>
-					</pre>
-					<div></div>
+FROM table_name;</code></pre>
+					<div class="fragment">
+						<pre><code>SELECT first_name 
+FROM customer;</code></pre>
+						<div><img src="./img/select-first-name.png" style="height:250px ;" alt=""></div>
+					</div>
 				</section>
 				<section>
-					<p>Query with filtering</p>
-					<pre><code>SELECT first_name
+					<h2>Main commands</h2>
+					<p>Query multiple attributes</p>
+					<pre><code>SELECT *
+FROM table_name;</code></pre>
+					<div class="fragment">
+						<pre>
+							<code>SELECT first_name, last_name, email 
+FROM customers;</code></pre>
+						<div>
+							<img src="./img/select-multi-attr.png" style="height:250px ;" alt="">
+						</div>
+					</div>
+				</section>
+				<section>
+					<p>Query with sorting or filtering</p>
+					<pre>
+						<code>SELECT attr
+FROM table_name
+ORDER BY expression [ASC | DESC];
+</code>
+					</pre>
+					<pre class="fragment"><code>SELECT first_name
 FROM customers
 WHERE first_name = 'John'</code></pre>
 					<pre class="fragment"><code>SELECT first_name
@@ -244,45 +295,49 @@ WHERE first_name IN ('Ann','Anne','Annie');</code></pre>
 					<pre class="fragment"><code>SELECT first_name
 FROM customers
 WHERE first_name LIKE 'Ann%';</code></pre>
-					<pre class="fragment"><code>SELECT first_name
-FROM customers
-WHERE first_name LIKE 'A%' AND
-			LENGTH(first_name) BETWEEN 3 AND 5</code></pre>
 					<div></div>
 				</section>
 				<section>
-					<p>Query with limiting</p>
+					<p>Building complex query</p>
 					<pre><code>SELECT first_name
 FROM customers
 WHERE first_name LIKE 'A%' AND
 			LENGTH(first_name) BETWEEN 3 AND 5
-LIMIT 5</code></pre>
-					<div></div>
+LIMIT 5;</code></pre>
+					<pre>
+						<code>SELECT film_id, title
+FROM film
+WHERE title LIKE 'Fast and%'
+ORDER BY title
+FETCH FIRST 5 ROW ONLY;
+</code>
+					</pre>
 				</section>
 			</section>
-
 			<section>
 				<h2>Links</h2>
 				<ul style="font-size: 1.5rem">
 					<li>
-						<a href="https://www.postgresql.org/docs/">https://www.postgresql.org/docs/</a> - official documentation
+						<a href="https://www.postgresql.org/docs/" target="_blank">https://www.postgresql.org/docs/</a> - official
+						documentation
 					</li>
 					<li>
-						<a
-							href="https://postgrespro.ru/docs/postgresql/14/index">https://postgrespro.ru/docs/postgresql/14/index</a>
+						<a href="https://postgrespro.ru/docs/postgresql/14/index"
+							target="_blank">https://postgrespro.ru/docs/postgresql/14/index</a>
 						- документация на русском
 					</li>
 					<li>
-						<a href="https://www.postgresqltutorial.com/ ">https://www.postgresqltutorial.com/</a>
+						<a href="https://www.postgresqltutorial.com/ " target="_blank">https://www.postgresqltutorial.com/</a>
 						- good tutorial for a quick start
 					</li>
 					<li>
-						<a
-							href="https://www.geeksforgeeks.org/normal-forms-in-dbms/">https://www.geeksforgeeks.org/normal-forms-in-dbms/</a>
+						<a href="https://www.geeksforgeeks.org/normal-forms-in-dbms/"
+							target="_blank">https://www.geeksforgeeks.org/normal-forms-in-dbms/</a>
 						- about normal forms
 					</li>
 					<li>
-						<a href="https://habr.com/ru/post/254773/">https://habr.com/ru/post/254773/</a> - про нормализацию на
+						<a href="https://habr.com/ru/post/254773/" target="_blank">https://habr.com/ru/post/254773/</a> - про
+						нормализацию на
 						русском.
 					</li>
 				</ul>
